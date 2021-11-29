@@ -21,12 +21,10 @@ public class Controller {
 	public String welcomeMesssage() {
 		return "Welcome to eManager";
 	}
-	
 	@GetMapping("/mc1")
 	public String msg1() {
 		return "This is test message2";
 	}
-	
 	@GetMapping("/test1")
 	public List<Test_table> getTestTable() {
 		return tstRepo.findAll();
