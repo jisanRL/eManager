@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Employee implements Serializable {
 	
 	@Id
-	@Column(name="ID")		// unchangable
+	@Column(name="ID")		 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id; 
 	
@@ -33,7 +33,7 @@ public class Employee implements Serializable {
 	@Column(name="ImageURL")
 	private String imageURL;
 	
-	@Column(name="EmployeeCode")		// unchangable 
+	@Column(name="EmployeeCode")		 
 	private String employeeCode;
 	
 	
