@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eManager.em.model.Employee;
 import com.eManager.em.repository.EmployeeRepository;
+import com.eManager.service.EmployeeService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -26,6 +28,8 @@ public class eController {
 	
 	@Autowired
 	private EmployeeRepository eRepo;
+	
+	private EmployeeService eService;
 	
 	/**
 	 * get all the employees 
@@ -37,7 +41,7 @@ public class eController {
 	}
 	
 	/**
-	 * gets the employee by name
+	 * gets the employee by name [for search purposes]
 	 * @return
 	 */
 	@GetMapping("/get/{name}")
@@ -64,14 +68,22 @@ public class eController {
 		return eRepo.save(employee);
 	}
 	
+	@PutMapping("/update")
+	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
+		// generates a brand new employee code if anything else is updated (fix this)
+		employee.setEmployeeCode(UUID.randomUUID().toString());
+		Employee nEm = eRepo.save(employee);
+		return new ResponseEntity<>(nEm, HttpStatus.OK);
+	}
+	
 	/**
 	 * Deletes user from the database
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping( path = { "/{id}" } )
-	public Employee deleteEmployee(@PathVariable("id") long id) {
-		Employee emp = eRepo.getOne(id);
+	@DeleteMapping(path = { "/delete/{id}" })
+	public Employee deleteEmployee(@PathVariable("id") Long id) {
+		Employee emp = eRepo.findById(id).get();
 		eRepo.deleteById(id);
 		return emp;
 	}
