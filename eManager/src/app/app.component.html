@@ -1,8 +1,4 @@
-<!-- <div *ngFor="let employee of employees">
-  <div>{{employee.name}}</div>
-</div>
- -->
- <!-- navbar component -->
+<!-- navbar component -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed;width:100%;z-index:100;">
   <a class="navbar-brand" style="color:white;">eManager</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +82,7 @@
               </div>
               <div class="form-group">
                  <label for="phone">Image URL</label>
-                 <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+                 <input type="text" ngModel name="imageURL" class="form-control" id="imageUrl" placeholder="Image URL" required>
               </div>
               <div class="modal-footer">
                  <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -130,7 +126,7 @@
                   </div>
                   <div class="form-group">
                      <label for="phone">Image URL</label>
-                     <input type="text" ngModel="{{editEmployee?.imageURL}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                     <input type="text" ngModel="{{editEmployee?.imageURL}}" name="imageURL" class="form-control" id="imageUrl" placeholder="Image URL">
                   </div>
                   <div class="modal-footer">
                      <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>

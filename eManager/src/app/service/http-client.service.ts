@@ -26,7 +26,7 @@ export class HttpClientService {
 
   // deletes employee
   deleteEmployee(id: number) {
-    return this.http.delete<Employee>('http://localhost:8080/user/' + id);
+    return this.http.delete<void>('http://localhost:8080/user/delete/' + id);
   }
 
   // search employee 
