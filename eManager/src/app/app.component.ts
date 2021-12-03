@@ -44,7 +44,22 @@ export class AppComponent implements OnInit {
 
   // add the employee to the server
   onAddEmployees(addForm: NgForm):void {
+    // this helps in getting the the data instatly from the back end 
+    document.getElementById('add-employee-form')?.click();
 
+    // value -> json representation of all the inputs in the form
+    this.httpService.addEmployees(addForm.value).subscribe(
+      (response: Employee) => {
+        console.log(response);
+        this.getEmployees();
+        addForm.reset();      // like emit()
+      }, 
+      // error response
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();    // like emit()
+      }
+    )
   }
 
   // updates the employee
