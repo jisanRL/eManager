@@ -68,6 +68,11 @@ public class eController {
 		return eRepo.save(employee);
 	}
 	
+	/**
+	 * updates the employees record by ID
+	 * @param employee
+	 * @return updated record except the ID
+	 */
 	@PutMapping("/update")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
 		// generates a brand new employee code if anything else is updated (fix this)
